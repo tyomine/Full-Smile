@@ -1,2 +1,31 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="conteiner">
+  <div class="row">
+    <h2 class="col-12 text-center">
+      笑顔を見たい<br>
+      笑顔になりたい<br>
+      誰かに笑顔になってもらいたい<br>
+      そんな場所を作り上げていきませんか？
+    </h2>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success d-grid gap-2 d-md-block" %>
+    </div>
+    <div class="col-3">
+      <%= link_to "ログイン", user_session_path, class: "btn btn-success d-grid gap-2 d-md-block" %>
+    </div>
+    <div>    
+      <% if user_signed_in? %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% end %>
+    </div>  
+    <div class="col-3">
+      ゲストログイン機能
+    </div>
+  </div>
+</div>
+
+
+
+
+
