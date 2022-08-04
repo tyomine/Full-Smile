@@ -1,2 +1,44 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= image_tag @user.get_profile_image(200,100), class:"rounded-circle" %>
+    </div>
+    <div class="col-5">
+      <table>
+        <tbody>
+          <tr>
+            <th></th>
+            <td><h4 class="font-weight-bold"><%= @user.name %></h4></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-img-top">
+            <%= image_tag post.image, size: "348x300" %>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title font-weight-bold">
+              <%= post.title %>
+            </h5>
+            <p class="card-text">
+              <%= post.body %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
