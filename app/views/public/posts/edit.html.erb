@@ -1,2 +1,39 @@
-<h1>Public::Posts#edit</h1>
-
+<div class="container">
+  <div Class="mx-auto mt-5 mb-5">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-center">編集画面</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <div class="col">
+        <%= form_with model: @post, url: post_path, method: :patch do |f| %>
+          <table>
+            <tbody>
+              <tr>
+                <th><%= f.label :画像 %></th>
+                <td><%= f.file_field :image, accept: "image/*" %></td>
+              </tr>
+              <tr>
+                <th><%= f.label :タイトル %></th>
+                <td><%= f.text_field :title, size: "50"%></td>
+              </tr>
+              <tr>
+                <th><%= f.label :内容 %></th>
+                <td><%= f.text_area :body, size: "60x10"%></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="mx-auto">
+              <div class="col">
+                <%= f.submit "編集完了", class: "btn btn-success" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
