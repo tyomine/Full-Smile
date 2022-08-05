@@ -48,11 +48,20 @@
         <%= link_to post_path(post.id) do %>
           <%= image_tag post.image, size: "450x350" %><br>
         <% end %>
+        
         <%= image_tag @user.get_profile_image(50,50), class:"rounded-circle" %>
+        
         <%= link_to post_path(post.id) do %>
           <p class="text-dark"><strong><%= post.title %></strong></p>
         <% end %>
+        
         <p><%= post.body %></p>
+        
+        <!--いいね機能で部分的に更新したい場所-->
+        <div class="likes_buttons_<%= post.id %>">
+          <%= render 'public/likes/like', post: post %>
+        </div>
+        
       <% end %>  
     </div>
   </div>
