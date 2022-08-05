@@ -24,7 +24,7 @@ class Post < ApplicationRecord
       image
   end
   
-  def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
   end
 end
