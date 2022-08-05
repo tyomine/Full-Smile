@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-4 text-right">
       <%= image_tag @user.get_profile_image(200,100), class:"rounded-circle" %>
     </div>
-    <div class="col-5">
+    <div class="col-8 text-center">
       <table>
         <tbody>
           <tr>
             <th></th>
-            <td><h4 class="font-weight-bold"><%= @user.name %></h4></td>
+            <td class="h4 font-weight-bold"><%= @user.name %></td>
           </tr>
           <tr>
             <th></th>
@@ -20,6 +20,17 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-4 h4 text-right font-weight-bold">
+      <p>投稿数</p>
+    </div>
+    <div class="col-4 h4 text-center font-weight-bold">
+      <p>フォロー数</p>
+    </div>
+    <div class="col-4 h4 text-left font-weight-bold">
+      <p>フォローワー数</p>
     </div>
   </div>
   <div class="row">
