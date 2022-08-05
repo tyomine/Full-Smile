@@ -37,6 +37,11 @@
       </li>
     <% end %>
   </header>
+    <div class="flash-notifications">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: key) %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
