@@ -62,6 +62,10 @@
           <%= render 'public/likes/like', post: post %>
         </div>
         
+        <div>
+          <p>コメント数:<%= post.comments.count %></p>
+        </div>
+        
       <% end %>  
     </div>
   </div>

@@ -41,6 +41,10 @@
             <%= image_tag post.image, size: "348x300" %>
           </div>
           <div class="card-body text-center">
+            <div class="card-top">
+              ♥<%= post.likes.count %>
+              コメント数:<%= post.comments.count %>
+            </div>
             <h5 class="card-title font-weight-bold">
               <%= post.title %>
             </h5>

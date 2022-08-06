@@ -12,16 +12,48 @@
           <td><%= @post.title %></td>
         </tr>
         <tr>
+          <div class="likes_buttons_<%= @post.id %>">
+            <%= render 'public/likes/like', post: @post %>
+          </div>
+        </tr>
+        <tr>
           <th>内容</th>
           <td><%= @post.body %></td>
         </tr>
         <tr>
           <th>投稿日:</th>
           <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
           <th></th>
-          <td class="btn-right">
+          <td>
             <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %> |
             <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            コメント件数：
+          </th>
+          <td>
+            <%= @post.comments.count %>
+          </td>
+        </tr>
+        
+        <% @post.comments.each do |comment| %>
+          <tr>
+            <td><%= image_tag comment.user.get_profile_image(100,100) %></td>
+            <td><%= comment.user.name %></td>
+            <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <th></th>
+          <td>
+            <%= form_with model: [@post, @comment] do |f| %>
+              <%= f.text_area :comment, size: "50x5", placeholder: "コメントをここに" %>
+              <%= f.submit "送信する" %>
+            <% end %>
           </td>
         </tr>
       </tbody>
