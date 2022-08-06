@@ -16,6 +16,7 @@
               </h3>
             </td>
           </tr>
+          <% if @user.name != "guestuser" %>
           <tr>
             <td>
               フォロー一覧
@@ -37,6 +38,7 @@
               <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-primary" %>
             </td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

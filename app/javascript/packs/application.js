@@ -20,9 +20,9 @@ Turbolinks.start()
 ActiveStorage.start()
 
 $(function(){
-  setTimeout("$('.notice').fadeOut('slow')", 2000);
+  setTimeout("$('.notice').fadeOut('slow')", 2500);
 });
 
 $(function(){
-  setTimeout("$('.alert').fadeOut('slow')", 2000);
+  setTimeout("$('.alert').fadeOut('slow')", 2500);
 });

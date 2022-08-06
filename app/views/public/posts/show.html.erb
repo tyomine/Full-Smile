@@ -27,8 +27,10 @@
         <tr>
           <th></th>
           <td>
-            <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %> |
-            <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
+            <% if @post.user == current_user %>
+              <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %> |
+              <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
+            <% end %>  
           </td>
         </tr>
         <tr class="coment_count">
@@ -45,6 +47,7 @@
   </div>
   <div class="row">
     <table>
+      <% if current_user != "guestuser" %>
       <tr>
         <th></th>
         <td>
@@ -54,6 +57,7 @@
           <% end %>
         </td>
       </tr>
+      <% end %>
     </table>
   </div>
 </div>

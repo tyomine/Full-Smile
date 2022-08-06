@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+  before_action :ensure_guest_user, only: [:new]
   
   def new
     @post = Post.new
@@ -50,6 +52,12 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, :image,)
   end
+  
+  def ensure_guest_user
+    if current_user.name == "guestuser"
+      redirect_to posts_path, alert: 'ゲストユーザーは投稿できません。'
+    end
+  end  
   
   
 end

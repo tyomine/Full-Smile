@@ -16,7 +16,11 @@
           </tr>
           <tr>
             <th></th>
-            <td><%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-success" %></td>
+            <td>
+              <% if current_user == @user && @user.name != "guestuser" %>
+                <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-success" %>
+              <% end %>  
+            </td>
           </tr>
         </tbody>
       </table>
