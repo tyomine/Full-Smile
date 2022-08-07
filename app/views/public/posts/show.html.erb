@@ -7,6 +7,11 @@
   <div class="row">
     <table>
       <tbody>
+        <th></th>
+        <td>
+        <%= link_to user_path(@post.user_id) do %>
+          <%= image_tag @post.user.get_profile_image(70,70), class:"rounded-circle" %>
+        <% end %>  
         <tr>
           <th>タイトル：</th>
           <td><%= @post.title %></td>
