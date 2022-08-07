@@ -12,15 +12,23 @@
           </tr>
           <tr>
             <th></th>
-            <td><%= @user.introduction %></td>
-          </tr>
-          <tr>
-            <th></th>
             <td>
               <% if current_user == @user && @user.name != "guestuser" %>
                 <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-success" %>
               <% end %>  
             </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <% if current_user != @user %>
+                <%= render "public/relationships/btn", user: @user %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= @user.introduction %></td>
           </tr>
         </tbody>
       </table>
@@ -29,12 +37,15 @@
   <div class="row justify-content-center">
     <div class="col-4 h4 text-right font-weight-bold">
       <p>投稿数</p>
+      <p><%= @user.posts.count %></p>
     </div>
     <div class="col-4 h4 text-center font-weight-bold">
       <p>フォロー数</p>
+      <p><%= @user.followings.count %></p>
     </div>
     <div class="col-4 h4 text-left font-weight-bold">
       <p>フォローワー数</p>
+      <p><%= @user.followers.count %></p>
     </div>
   </div>
   <div class="row">

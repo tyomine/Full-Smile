@@ -1,6 +1,6 @@
 <div class="container">
   <div class="flash-notifications">
-  </div>  
+  </div>
   <div class="row">
     <div class="col-4">
       <table>
@@ -12,18 +12,24 @@
           </tr>
           <tr>
             <td class="h3 font-weight-bold">
-                  <%= @user.name %>
-              </h3>
+              <%= @user.name %>
             </td>
           </tr>
           <% if @user.name != "guestuser" %>
           <tr>
             <td>
-              フォロー一覧
+              <%= link_to "いいね一覧", likes_user_path(@user.id), class: "btn btn-outline-primary" %>
             </td>
           </tr>
           <tr>
-            <td>フォローワー一覧</td>
+            <td>
+              <%= link_to "フォロー一覧", user_followings_path(@user.id), class: "btn btn-outline-primary" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to "フォローワー一覧", user_followers_path(@user.id), class: "btn btn-outline-primary" %>
+            </td>
           </tr>
           <tr>
             <td>通知</td>
@@ -43,18 +49,18 @@
       </table>
     </div>
     <div class="col-8">
-      <% @post.each do |post| %>
+      <% @posts.each do |post| %>
         <%= link_to post_path(post.id) do %>
           <%= image_tag post.image, size: "450x350" %><br>
         <% end %>
         
-        <%= image_tag @user.get_profile_image(50,50), class:"rounded-circle" %>
-        
+        <%= link_to user_path(post.user_id) do %>
+          <%= image_tag post.user.get_profile_image(70,70), class:"rounded-circle" %>
+        <% end %>  
+
         <%= link_to post_path(post.id) do %>
           <p class="text-dark"><strong><%= post.title %></strong></p>
         <% end %>
-        
-        <p><%= post.body %></p>
         
         <!--いいね機能で部分的に更新したい場所-->
         <div class="likes_buttons_<%= post.id %>">
@@ -64,7 +70,9 @@
         <div>
           <p>コメント数:<%= post.comments.count %></p>
         </div>
-        
+        <div>
+          <p><%= post.body %></p>
+        </div>
       <% end %>  
     </div>
   </div>
