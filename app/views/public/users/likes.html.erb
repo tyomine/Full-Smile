@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <h2 class="col-12 text-center">
+      いいね一覧ページ
+    </h2>
+  </div>
+  <div class="row">
+    <% @like_posts.each do |like_post| %>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-img-top">
+            <%= link_to image_tag(like_post.image,size: "348x300"), post_path(like_post.id) %>
+          </div>
+          <div class="card-body text-center">
+            <div class="card-top">
+              ♥<%= like_post.likes.count %>
+              コメント数:<%= like_post.comments.count %>
+            </div>
+            <h5 class="card-title font-weight-bold">
+              <%= link_to like_post.title, post_path(like_post.id) %>
+            </h5>
+            <p class="card-text">
+              <%= link_to like_post.body, post_path(like_post.id) %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

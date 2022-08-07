@@ -17,11 +17,14 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+      #idを持たせるため
+      member do
+        get :likes
+      end
     end
     
     resources :posts, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
       resource :likes, only: [:create, :destroy]
-      get 'posts/likes' => "likes#index"
       resources :comments, only: [:create, :destroy]
     end
   end  

@@ -36,13 +36,12 @@
         <tr class="coment_count">
           <%= render "public/comments/comment_count", post: @post %>
         </tr>
-      </table>
+      </tbody>
+    </table>
   </div>
   <div class="row">
     <table class="comments-area col-10">
-      
         <%= render "public/comments/comment",post: @post %>
-      
     </table>
   </div>
   <div class="row">
