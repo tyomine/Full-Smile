@@ -4,10 +4,16 @@
     <% @posts.each do |post| %>
       <div class="col-md-3">
         <div class="card">
-          <div class="card-img-top">
-            <%= image_tag post.image, size: "254x200" %>
+          <div class="card-img-top text-center">
+            <%= link_to admin_post_path(post.id) do %>
+              <%= image_tag post.image, size: "230x200" %>
+            <% end %>  
           </div>
           <div class="card-body text-center">
+            <div class="card-image text-left">
+               <%= image_tag post.user.get_profile_image(50,50), class:"rounded-circle" %>
+               <%= post.user.name %>
+            </div>
             <div class="card-top">
               ♥<%= post.likes.count %>
               コメント数:<%= post.comments.count %>

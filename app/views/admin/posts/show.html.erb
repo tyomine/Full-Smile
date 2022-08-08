@@ -1,2 +1,70 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+      <table class="col-12">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= image_tag @user.get_profile_image(60,60) %></td>
+            <td><%= @user.name %></td>
+          </tr>
+        </tbody>
+      </table>
+  </di>
+  <div class="row text-center">
+    <div class="col">
+      <%= image_tag @post.image, size: "500x400" %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="col">
+      <tbody>
+        <th></th>
+        <td>
+        <%= link_to admin_user_path(@post.user_id) do %>
+          <%= image_tag @post.user.get_profile_image(70,70), class:"rounded-circle" %>
+        <% end %>
+        <tr>
+          <th>タイトル：</th>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <% if request.fullpath.include? "/public" %>
+            <div class="likes_buttons_<%= @post.id %>">
+              <%= render 'public/likes/like', post: @post %>
+            </div>
+          <% end %>  
+        </tr>
+        <tr>
+          <th>内容</th>
+          <td><%= @post.body %></td>
+        </tr>
+        <tr>
+          <th>投稿日:</th>
+          <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <% if @post.user == current_user %>
+              <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %> |
+              <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
+            <% end %>  
+          </td>
+        </tr>
+        <tr class="coment_count">
+          <%= render "public/comments/comment_count", post: @post %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <table class="comments-area col-10">
+        <%= render "public/comments/comment",post: @post %>
+    </table>
+  </div>
+</div>
