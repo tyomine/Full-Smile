@@ -1,2 +1,26 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class="h2 text-center">ユーザー投稿一覧</div>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-img-top">
+            <%= image_tag post.image, size: "254x200" %>
+          </div>
+          <div class="card-body text-center">
+            <div class="card-top">
+              ♥<%= post.likes.count %>
+              コメント数:<%= post.comments.count %>
+            </div>
+            <h5 class="card-title font-weight-bold">
+              <%= post.title %>
+            </h5>
+            <p class="card-text">
+              <%= post.body %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
