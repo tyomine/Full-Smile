@@ -1,0 +1,40 @@
+<div class="containar">
+  <h3 class="text-center">"<%= params[:word] %>"の検索結果</h3>
+  <div class="row">
+      <table class="table table-hover table-inverse">
+        <% if @range == "User" %>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= image_tag user.get_profile_image(70,70) %></td>
+                <td><%= link_to user.name, user_path(user.id) %></td>
+                <td>投稿数<%= user.posts.count %></td>
+              </tr>
+            <% end %>  
+          </tbody>
+      </table>    
+        <% else %>  
+          <% @posts.each do |post| %>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-img-top">
+                  <%= image_tag post.image, size: "348x300" %>
+                </div>
+                <div class="card-body text-center">
+                  <div class="card-top">
+                    ♥<%= post.likes.count %>
+                    コメント数:<%= post.comments.count %>
+                  </div>
+                  <h5 class="card-title font-weight-bold">
+                    <%= post.title %>
+                  </h5>
+                  <p class="card-text">
+                    <%= post.body %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %> 
+  </div>
+</div>

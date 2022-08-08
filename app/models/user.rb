@@ -46,6 +46,15 @@ class User < ApplicationRecord
   # フォローしているか判定
   def following(user)
     followings.include?(user)
-  end  
+  end
+  
+  def self.looks(search, word)
+    # 部分一致
+    if search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
+  end
     
 end
