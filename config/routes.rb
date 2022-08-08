@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     
     resources :users, only: [:index, :show]
-    resources :posts, only: [:show]
+    resources :posts, only: [:show, :destroy]
     
   end
   
