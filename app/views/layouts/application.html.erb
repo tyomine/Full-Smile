@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <header class="text-center">
+    <header>
       <% if request.fullpath.include? "/admin" %>
         <%= render 'layouts/admin_header' %>
       <% else %>
