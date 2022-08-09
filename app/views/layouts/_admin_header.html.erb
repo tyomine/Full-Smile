@@ -1,15 +1,26 @@
+   <nav class="navbar navbar-expand navbar-dark navbar-fixed-top" style="background-color:orange;">
+    <ul class="navbar-nav navbar-dark ml-auto">  
     <% if admin_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
+          <i class="fas fa-sign-out-alt"></i> ログアウト
+        <% end %>
       </li>
       <li>
-        <%= link_to "ユーザー一覧", admin_users_path %>
+        <%= link_to admin_users_path, class: "nav-link text-light" do %>
+          <i class="fas fa-users"></i> ユーザー一覧
+        <% end %>
       </li>
       <li>
-        <%= link_to "投稿一覧", admin_root_path %>
+        <%= link_to admin_root_path, class: "nav-link text-light" do %>
+          <i class="far fa-list-alt"></i> 投稿一覧
+        <% end %>
       </li>
     <% else %>
       <li>
-        <%= link_to "ログイン", new_admin_session_path %>
+        <%= link_to new_admin_session_path, class: "nav-link text-light" do %>
+          <i class="fas fa-sign-in-alt"></i> ログイン
+        <% end %>
       </li>
     <% end %>
+    </ul>
