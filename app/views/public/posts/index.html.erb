@@ -6,24 +6,24 @@
         <%= @user.name %>
       </div>
     </div>
-    <div class="col-8 text-center">
+    <div class="col-8 text-center form-inline">
       <% if @user.name != "guestuser" %>
-        <div class="mt-2">
+        <div class="mt-2 mr-1">
           <%= link_to "いいね一覧", likes_user_path(@user.id), class: "btn btn-outline-info" %>
         </div>
-        <div class="mt-2">
+        <div class="mt-2 mr-1">
           <%= link_to "フォロー一覧", user_followings_path(@user.id), class: "btn btn-outline-info" %>
         </div>
-        <div class="mt-2">
+        <div class="mt-2 mr-1">
           <%= link_to "フォローワー一覧", user_followers_path(@user.id), class: "btn btn-outline-info" %>
         </div>
-        <div class="mt-2">
+        <div class="mt-2 mr-1">
           通知
         </div>
-        <div class="mt-2">
+        <div class="mt-2 mr-1">
           <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-outline-info" %>
         </div>
-        <div class="mt-2">
+        <div class="mt-2 mr-1">
           <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-info" %>
         </div>
       <% end %>
@@ -35,7 +35,7 @@
       <div class="card-img-top shadow mt-5">
         
         <div class="form-inline">
-          <div class="ml-5">
+          <div class="ml-5 mt-1">
             <%= link_to user_path(post.user_id) do %>
               <%= image_tag post.user.get_profile_image(60,60), class:"post-user-image" %>
             <% end %>
@@ -49,7 +49,7 @@
 
         <div class="card-body img-light text-center">
           <%= link_to post_path(post.id) do %>
-            <%= image_tag post.image, size: "180x180" %>
+            <%= image_tag post.image, size: "180x190" %>
           <% end %>
         </div>
           <div class="form-inline">
@@ -67,7 +67,9 @@
             <% end %>
           </div>
           <div class="ml-5">
-            <%= post.body.truncate(10) %>
+            <%= link_to post_path(post.id) do %>
+              <strong class="text-dark"><%= post.body.truncate(10) %></strong>
+            <% end %>
           </div>
         </div>
       </div>  
