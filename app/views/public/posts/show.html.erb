@@ -1,10 +1,12 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
+  <div class="col">
+    <div class="row">
       <div class="card mt-5 w-75 h-75">
-        <div class="mt-2 text-center">
-          <%= image_tag @post.image, size: "400x300" %>
+          
+        <div class="mt-5 text-center">
+          <%= image_tag @post.image, size: "450x350" %>
         </div>
+          
         <div class="form-inline">
           <div class="ml-5">
             <%= link_to user_path(@post.user_id) do %>
@@ -37,31 +39,28 @@
           <% end %> 
         </div>
       </div>
-      <div class="row ml-1">
-        <div class="coment_count">
-          <%= render "public/comments/comment_count", post: @post %>
-        </div>
+    </div>
+    
+    <div class="row ml-1">
+      <div class="coment_count">
+        <%= render "public/comments/comment_count", post: @post %>
       </div>
-      <div class="row mt-1 ml-2">
-        <div class="comments-area">
-          <%= render "public/comments/comment",post: @post %>
-        </div>
+    </div>
+    
+    <div class="row mt-1 ml-2">
+      <div class="comments-area">
+        <%= render "public/comments/comment",post: @post %>
       </div>
-      <div class="row mt-3 ml-1">
-      <table>
-        <% if current_user.name != "guestuser" %>
-          <tr>
-            <th></th>
-            <td>
-              <%= form_with(model: [@post, @comment], local: false) do |f| %>
-                <%= f.text_area :comment, size: "50x5", placeholder: "コメントをここに" %>
-                <%= f.submit "送信する" %>
-              <% end %>
-            </td>
-          </tr>
+    </div>
+    
+    <div class="row mt-3 ml-1">
+      <% if current_user.name != "guestuser" %>
+        <%= form_with(model: [@post, @comment], local: false) do |f| %>
+          <%= f.text_area :comment, size: "50x5", placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
         <% end %>
-      </table>
-      </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
