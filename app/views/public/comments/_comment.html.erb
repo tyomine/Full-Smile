@@ -1,12 +1,27 @@
-        <% @post.comments.each do |comment| %>
-          <div class="row"></div>
-            <td><%= image_tag comment.user.get_profile_image(100,100) %></td>
-            <td><%= comment.user.name %></td>
-            <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
-            <td>
-              <% if comment.user == current_user %>
-                <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn btn-light btn-sm", "data-confirm" => "本当に削除しますか？" %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+<% @post.comments.each do |comment| %>
+  <div class="form-inline">
+    <div>
+      <%= link_to user_path(comment.user_id) do %>
+        <%= image_tag comment.user.get_profile_image(70,70), class:"rounded-circle2" %>
+      <% end %>
+    </div>
+    <div class="ml-2">
+      <%= link_to user_path(post.user_id) do %>
+        <strong class="text-dark"><%= comment.user.name %></strong>
+      <% end %> 
+    </div>
+    <div class="ml-3">
+      <%= comment.created_at.strftime('%m/%d %H:%M') %>
+    </div>
+  </div>
+  <div class="form-inline ml-2">
+    <div class="ml-5">
+      <%= comment.comment %>
+    </div>
+    <div class="ml-3">
+      <% if comment.user == current_user %>
+        <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn btn-light btn-sm", "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+    </div>
+  </div>  
+<% end %>
