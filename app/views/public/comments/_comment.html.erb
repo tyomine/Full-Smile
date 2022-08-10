@@ -1,11 +1,11 @@
         <% @post.comments.each do |comment| %>
-          <tr>
+          <div class="row"></div>
             <td><%= image_tag comment.user.get_profile_image(100,100) %></td>
             <td><%= comment.user.name %></td>
             <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
             <td>
               <% if comment.user == current_user %>
-                <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-outline-info btn-sm", "data-confirm" => "本当に削除しますか？" %>
+                <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn btn-light btn-sm", "data-confirm" => "本当に削除しますか？" %>
               <% end %>
             </td>
           </tr>

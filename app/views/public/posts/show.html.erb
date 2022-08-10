@@ -1,68 +1,66 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= image_tag @post.image, size: "500x400" %>
-    </div>
-  </div>
-  <div class="row">
-    <table>
-      <tbody>
-        <th></th>
-        <td>
-        <%= link_to user_path(@post.user_id) do %>
-          <%= image_tag @post.user.get_profile_image(70,70), class:"rounded-circle" %>
-        <% end %>  
-        <tr>
-          <th>タイトル：</th>
-          <td><%= @post.title %></td>
-        </tr>
-        <tr>
-          <div class="likes_buttons_<%= @post.id %>">
+      <div class="card mt-5 w-75 h-75">
+        <div class="mt-2 text-center">
+          <%= image_tag @post.image, size: "400x300" %>
+        </div>
+        <div class="form-inline">
+          <div class="ml-5">
+            <%= link_to user_path(@post.user_id) do %>
+              <%= image_tag @post.user.get_profile_image(70,70), class:"rounded-circle" %>
+            <% end %>
+          </div>
+          <div class="ml-5">
+            <%= link_to user_path(@post.user_id) do %>
+              <strong class="text-dark"><%= @post.user.name %></strong>
+            <% end %> 
+          </div>
+          <div class="ml-5 likes_buttons_<%= @post.id %>">
             <%= render 'public/likes/like', post: @post %>
           </div>
-        </tr>
-        <tr>
-          <th>内容</th>
-          <td><%= @post.body %></td>
-        </tr>
-        <tr>
-          <th>投稿日:</th>
-          <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <tr>
-          <th></th>
-          <td>
-            <% if @post.user == current_user %>
-              <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %> |
-              <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
-            <% end %>  
-          </td>
-        </tr>
-        <tr class="coment_count">
+        </div> 
+        
+        <div class="ml-5">
+          タイトル:<%= @post.title %>
+        </div>
+        <div class="card ml-5 mr-5">
+          <%= @post.body %>
+        </div>
+        <div class="text-right mr-5">
+          投稿日:<%= @post.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div class="text-right mr-5">
+          <% if @post.user == current_user %>
+            <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %> |
+            <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
+          <% end %> 
+        </div>
+      </div>
+      <div class="row ml-1">
+        <div class="coment_count">
           <%= render "public/comments/comment_count", post: @post %>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="row">
-    <table class="comments-area col-10">
-        <%= render "public/comments/comment",post: @post %>
-    </table>
-  </div>
-  <div class="row">
-    <table>
-      <% if current_user.name != "guestuser" %>
-      <tr>
-        <th></th>
-        <td>
-          <%= form_with(model: [@post, @comment], local: false) do |f| %>
-            <%= f.text_area :comment, size: "50x5", placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="comments-area">
+          <%= render "public/comments/comment",post: @post %>
+        </div>
+      </div>
+      <div class="row">
+      <table>
+        <% if current_user.name != "guestuser" %>
+          <tr>
+            <th></th>
+            <td>
+              <%= form_with(model: [@post, @comment], local: false) do |f| %>
+                <%= f.text_area :comment, size: "50x5", placeholder: "コメントをここに" %>
+                <%= f.submit "送信する" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
   </div>
 </div>
 
