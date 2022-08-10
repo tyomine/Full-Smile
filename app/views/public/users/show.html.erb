@@ -36,5 +36,6 @@
   </div>
   <div class="row">
     <%= render "public/posts/post_index", posts: @posts %>
+    <%= paginate @posts %>
   </div>
 </div>
