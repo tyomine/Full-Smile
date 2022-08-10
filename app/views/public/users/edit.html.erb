@@ -37,7 +37,8 @@
           <div class="row">
             <div class="mx-auto">
               <div class="col">
-                <%= f.submit "編集完了", class: "btn btn-success" %>
+                <%= f.submit "編集完了", class: "btn btn-success" %> | 
+                <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-primary" %>
               </div>
             </div>
           </div>
