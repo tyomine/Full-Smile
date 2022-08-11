@@ -1,67 +1,49 @@
 <div class="container">
   <div class="row">
-      <table class="col-12">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= image_tag @user.get_profile_image(60,60) %></td>
-            <td><%= @user.name %></td>
-          </tr>
-        </tbody>
-      </table>
-  </di>
-  <div class="row text-center">
-    <div class="col">
-      <%= image_tag @post.image, size: "500x400" %>
+    <div class="col-12 text-center mt-5">
+      <%= link_to admin_user_path(@post.user_id) do %>
+        <%= image_tag @user.get_profile_image(60,60), class:"rounded-circle1" %>
+      <% end %>
+      &emsp;&emsp;
+      <%= link_to admin_user_path(@post.user_id) do %>
+        <strong class="text-dark"><%= @user.name %></strong>
+      <% end %>
+    </div>
+  </div>  
+      
+  <div class="row mt-3">
+    <div class="col text-center">
+      <%= image_tag @post.image, size: "450x350" %>
     </div>
   </div>
   <div class="row">
-    <table class="col">
-      <tbody>
-        <th></th>
-        <td>
-        <%= link_to admin_user_path(@post.user_id) do %>
-          <%= image_tag @post.user.get_profile_image(70,70), class:"rounded-circle" %>
-        <% end %>
-        <tr>
-          <th>タイトル：</th>
-          <td><%= @post.title %></td>
-        </tr>
-        <tr>
-          <% if request.fullpath.include? "/public" %>
-            <div class="likes_buttons_<%= @post.id %>">
-              <%= render 'public/likes/like', post: @post %>
-            </div>
-          <% end %>  
-        </tr>
-        <tr>
-          <th>内容</th>
-          <td><%= @post.body %></td>
-        </tr>
-        <tr>
-          <th>投稿日:</th>
-          <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <tr>
-          <th></th>
-          <td>
-            <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
-          </td>
-        </tr>
-        <tr class="coment_count">
-          <%= render "public/comments/comment_count", post: @post %>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="row">
-    <table class="comments-area col-10">
+    <div class="col text-center">
+        <div class="h4">
+          タイトル:&emsp;<%= @post.title %>
+        </div>
+        <div>
+          内容
+        </div>
+        <div class"mt-1" style="width: 450px;">
+          <%= @post.body %>
+        </div>
+        <div>
+          投稿日:
+          <%= @post.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div>
+          <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col">
+      <div class="coment_count">
+        <%= render "public/comments/comment_count", post: @post %>
+      </div> 
+      <div class="comments-area">
         <%= render "public/comments/comment",post: @post %>
-    </table>
+      </div>
+    </div>
   </div>
 </div>
