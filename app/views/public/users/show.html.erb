@@ -24,25 +24,21 @@
       </div>
     </div>
   </div>
-  <div class="row mt-3">
-    <div class="col-4 h4 text-right font-weight-bold">
-      <p>投稿数</p>
-      <p class="mr-4"><%= @user.posts.count %></p>
-    </div>
-    <div class="col-4 h4 text-center font-weight-bold">
-      <p>フォロー</p>
-      <p><%= @user.followings.count %></p>
-    </div>
-    <div class="col-4 h4 text-left font-weight-bold">
-      <p>フォローワー</p>
-      <p class="ml-5"><%= @user.followers.count %></p>
-    </div>
+  <div class="row mt-5 h5 font-weight-bold">
+    <div class="col-4 text-right">投稿数</div>
+    <div class="col-4 text-center">フォロー</div>
+    <div class="col-4">フォローワー</div>
+  </div>
+  <div class="row h4 font-weight-bold">
+    <div class="col-4 text-right pr-5"><%= @user.posts.count %></div>
+    <div class="col-4 text-center"><%= @user.followings.count %></div>
+    <div class="col-4 pl-5"><%= @user.followers.count %></div>
   </div>
   <div class="row">
     <%= render "public/posts/post_index", posts: @posts %>
   </div>
-  <div class="row">
-    <div class="col text-center mt-3 mb-3">
+  <div class="row mx-auto text-center">
+    <div class="col">
       <%= paginate @posts %>
     </div>
   </div>

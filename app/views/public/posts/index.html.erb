@@ -31,7 +31,7 @@
   </div>
 
   <div class="row">
-    <div class="col text-center h2 mt-5 border">
+    <div class="col text-center h2 mt-5 border orange-300">
       <strong>投稿一覧</strong>
     </div>
   </div>
@@ -40,8 +40,8 @@
     <%= render "post_index", posts: @posts %>
   </div>
   
-  <div class="row">
-    <div class="col text-center mt-3 mb-3">
+  <div class="row mx-auto text-center">
+    <div class="col">
       <%= paginate @posts %>
     </div>
   </div>

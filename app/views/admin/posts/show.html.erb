@@ -1,46 +1,47 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 text-center mt-5">
-      <%= link_to admin_user_path(@post.user_id) do %>
-        <%= image_tag @user.get_profile_image(60,60), class:"rounded-circle1" %>
-      <% end %>
-      &emsp;&emsp;
-      <%= link_to admin_user_path(@post.user_id) do %>
-        <strong class="text-dark"><%= @user.name %></strong>
-      <% end %>
-    </div>
-  </div>  
+    <div class="col mt-5">
+      <div class="card w-75 mx-auto">
+        <div class="form-inline w-50 mx-auto mt-3">
+          <div>
+            <%= link_to admin_user_path(@post.user_id) do %>
+              <%= image_tag @user.get_profile_image(60,60), class:"rounded-circle1" %>
+            <% end %>
+          </div>
+          &emsp;&emsp;
+          <div class="h4">
+            <%= link_to admin_user_path(@post.user_id) do %>
+              <strong class="text-dark"><%= @user.name %></strong>
+            <% end %>
+          </div>
+        </div>
       
-  <div class="row mt-3">
-    <div class="col text-center">
-      <%= image_tag @post.image, size: "450x350" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col text-center">
-      <div class="h4 mt-3">
-        タイトル:&emsp;<%= @post.title %>
-      </div>
-      <div class="h5">
-        内容
-      </div>
-      <div class"mt-1">
-        <%= @post.body %>
-      </div>
-      <div>
-        投稿日:<%= @post.created_at.strftime('%Y/%m/%d') %>
-      </div>
-      <div>
-        <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
+        <div class="row mt-3">
+          <div class="col text-center">
+            <%= image_tag @post.image, size: "450x350" %>
+          </div>
+        </div>
+        <div class="h4 w-75 mx-auto mt-3">
+          タイトル:&emsp;<%= @post.title %>
+        </div>
+        <div class="w-75 mx-auto m-1">
+          <%= @post.body %>
+        </div>
+        <div class="w-75 mx-auto m-1">
+          投稿日:<%= @post.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div class="w-75 mx-auto text-right m-2">
+          <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row w-75 mx-auto m-3">
     <div class="col">
-      <div class="coment_count">
+      <div class="coment_count m-2">
         <%= render "public/comments/comment_count", post: @post %>
       </div> 
-      <div class="comments-area mb-3">
+      <div class="comments-area m-3">
         <%= render "public/comments/comment",post: @post %>
       </div>
     </div>

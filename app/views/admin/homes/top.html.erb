@@ -4,7 +4,7 @@
       <strong>ユーザー投稿一覧</strong>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-3">
     <% @posts.each do |post| %>
       <div class="col-md-4">
         <div class="card-img-top shadow mt-3 mb-2">
@@ -22,8 +22,8 @@
       </div>
     <% end %>
   </div>
-  <div class="row">
-    <div class="col text-conter">
+  <div class="row mx-auto text-center">
+    <div class="col">
       <%= paginate @posts %>
     </div>
   </div>
