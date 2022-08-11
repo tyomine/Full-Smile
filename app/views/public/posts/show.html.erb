@@ -48,24 +48,25 @@
     </div>
   </div>
     
-    <div class="row w-75 mx-auto mt-1 ml-2">
-      <div class="comments-area">
-        <%= render "public/comments/comment",post: @post %>
-      </div>
+  <div class="row w-75 mx-auto mt-1 ml-2">
+    <div class="comments-area">
+      <%= render "public/comments/comment",post: @post %>
     </div>
+  </div>
     
-    <div class="row w-75 mx-auto error_comment">
+  <div class="row w-75 mx-auto error_comment">
+    <div class="col">
       <%= render "public/posts/error", post: @comment %>
     </div>
+  </div>
     
-    <div class="row w-75 mx-auto m-3">
-      <% if current_user.name != "guestuser" %>
-        <%= form_with(model: [@post, @comment], local: false) do |f| %>
-          <%= f.text_area :comment, size: "50x5", placeholder: "コメントをここに" %>
-          <%= f.submit "送信する" %>
-        <% end %>
+  <div class="row w-75 mx-auto m-3">
+    <% if current_user.name != "guestuser" %>
+      <%= form_with(model: [@post, @comment], local: false) do |f| %>
+        <%= f.text_area :comment, size: "50x5", placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
 
