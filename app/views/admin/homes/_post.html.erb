@@ -1,0 +1,19 @@
+  <div class="card-img-top text-center mt-3">
+    <%= link_to admin_post_path(post.id) do %>
+      <%= image_tag post.image, size: "180x190" %>
+    <% end %>  
+  </div>
+  <div class="card-body text-center">
+    <div class="top">
+      ♥<%= post.likes.count %>&emsp;&emsp;
+      コメント数:<%= post.comments.count %>
+    </div>
+  <div class="card-title mt-2 h5">
+    <%= link_to admin_post_path(post.id) do %>
+      <strong class="text-dark"><%= post.title.truncate(10) %></strong>
+    <% end %>
+  </div>
+    <p class="card-text">
+      <%= post.body.truncate(10) %>
+    </p>
+  </div>

@@ -17,27 +17,14 @@
                <strong class="text-dark ml-3"><%= post.user.name %></strong>
             <% end %>
           </div>
-          <div class="card-img-top text-center mt-2">
-            <%= link_to admin_post_path(post.id) do %>
-              <%= image_tag post.image, size: "180x190" %>
-            <% end %>  
-          </div>
-          <div class="card-body text-center">
-            <div class="top">
-              ♥<%= post.likes.count %>
-              コメント数:<%= post.comments.count %>
-            </div>
-            <div class="card-title mt-2 h5">
-              <%= link_to admin_post_path(post.id) do %>
-                <strong class="text-dark"><%= post.title.truncate(10) %></strong>
-              <% end %>
-            </div>
-            <p class="card-text">
-              <%= post.body.truncate(10) %>
-            </p>
-          </div>
+          <%= render "post", post: post %>
         </div>
       </div>
     <% end %>
+  </div>
+  <div class="row">
+    <div class="col text-conter">
+      <%= paginate @posts %>
+    </div>
   </div>
 </div>

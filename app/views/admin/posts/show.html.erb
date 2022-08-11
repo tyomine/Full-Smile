@@ -18,30 +18,29 @@
   </div>
   <div class="row">
     <div class="col text-center">
-        <div class="h4">
-          タイトル:&emsp;<%= @post.title %>
-        </div>
-        <div>
-          内容
-        </div>
-        <div class"mt-1" style="width: 450px;">
-          <%= @post.body %>
-        </div>
-        <div>
-          投稿日:
-          <%= @post.created_at.strftime('%Y/%m/%d') %>
-        </div>
-        <div>
-          <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
-        </div>
+      <div class="h4 mt-3">
+        タイトル:&emsp;<%= @post.title %>
+      </div>
+      <div class="h5">
+        内容
+      </div>
+      <div class"mt-1">
+        <%= @post.body %>
+      </div>
+      <div>
+        投稿日:<%= @post.created_at.strftime('%Y/%m/%d') %>
+      </div>
+      <div>
+        <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-primary", "data-confirm" => "本当に削除しますか？" %>
+      </div>
     </div>
-    </div>
-    <div class="row">
+  </div>
+  <div class="row">
     <div class="col">
       <div class="coment_count">
         <%= render "public/comments/comment_count", post: @post %>
       </div> 
-      <div class="comments-area">
+      <div class="comments-area mb-3">
         <%= render "public/comments/comment",post: @post %>
       </div>
     </div>
