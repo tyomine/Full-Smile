@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   
   validates :title, presence: true, length: { maximum: 30 }
-  validates :body, presence: true, length: { minimum: 1, maximum: 500 }
+  validates :body, presence: true, length: { maximum: 500 }
   validates :image, presence: true
   
   def get_image
