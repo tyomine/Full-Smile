@@ -25,8 +25,8 @@ class Public::UsersController < ApplicationController
   end
   
   def likes
-    likes = Like.where(user_id: @user.id).pluck(:post_id)
-    @like_posts = Post.find(likes)
+    post_ids = Like.where(user_id: @user.id).pluck(:post_id)
+    @like_posts = Post.where(id: post_ids).page(params[:page])
   end
   
   private

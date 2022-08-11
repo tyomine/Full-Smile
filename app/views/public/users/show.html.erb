@@ -40,6 +40,10 @@
   </div>
   <div class="row">
     <%= render "public/posts/post_index", posts: @posts %>
-    <%= paginate @posts %>
+  </div>
+  <div class="row">
+    <div class="col text-center mt-3 mb-3">
+      <%= paginate @posts %>
+    </div>
   </div>
 </div>

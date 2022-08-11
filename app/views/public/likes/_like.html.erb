@@ -3,7 +3,7 @@
     <td>
       いいね
       <%= link_to post_likes_path(post), method: :delete, remote: true do %>
-        <i class="fas fa-laugh-squint"></i><%= post.likes.count %>
+        <i class="fas fa-laugh-squint like"></i><%= post.likes.count %>
       <% end %>  
     </td>
   <% else %>

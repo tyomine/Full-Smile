@@ -25,10 +25,15 @@
               <%= link_to post_path(like_post.id) do %>
                 <strong class="text-dark"><%= like_post.body.truncate(10) %></strong>
               <% end %>
-            </h5> 
+            </h5>
           </div>
         </div>
       </div>
     <% end %>
+  </div>
+  <div class="row">
+    <div class="col text-center mt-3 mb-3">
+      <%= paginate @like_posts %>
+    </div>
   </div>
 </div>
