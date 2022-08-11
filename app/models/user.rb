@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :introduction, length: { maximum: 300 }
   
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
