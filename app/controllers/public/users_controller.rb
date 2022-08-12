@@ -29,6 +29,19 @@ class Public::UsersController < ApplicationController
     @like_posts = Post.where(id: post_ids).page(params[:page])
   end
   
+  def unsubscribe
+    @user = User.find(params[:user_id])
+  end  
+  
+  def withdrawal
+    @user = User.find(params[:user_id])
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
+  
   private
   
   def user_params
