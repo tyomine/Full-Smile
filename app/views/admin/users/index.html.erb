@@ -11,6 +11,7 @@
         <th>登録日</th>
         <th>ユーザー名</th>
         <th>メールアドレス</th>
+        <th>ステータス</th>
       </thead>
       <% @users.each do |user| %>
       <tbody class="h4">
@@ -20,6 +21,13 @@
         <td><%= user.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         <td><%= link_to user.name, admin_user_path(user.id) %></td>
         <td><%= user.email %></td>
+        <td>
+          <% if user.is_deleted == false %>
+            <p class="text-success"><b>有効</b></p>
+          <% else %>
+            <p class="text-muted"><b>退会</b></p>
+          <% end %>
+        </td>
       </tbody>
       <% end %>
     </table>

@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col w-75 mx-auto text-center">
+      <h2 class="font-weight-bold mt-5">本当に退会させますか？</h2>
+        <p class="h3 mt-3">
+          ユーザーが、全てのサービスをご利用いただけなくなります。<br>
+          本当に退会させてよろしいですか？
+        </p>
+        <div class="mt-5">
+          <%= link_to "退会させる", admin_user_withdrawal_path(@user), method: :patch, class: "btn btn-danger", data: { confilm: "本当に退会しますか？" } %> | 
+          <%= link_to "退会しない", admin_user_path(@user), class: "btn btn-primary" %>
+        </div>
+    </div>
+  </div>
+</div>
