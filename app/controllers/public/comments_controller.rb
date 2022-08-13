@@ -4,7 +4,10 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
-    unless @comment.save
+    if @comment.save
+       #通知の作成
+       @comment.create_notification_comment!(current_user, @post.id)
+    else  
       render 'error'
     end
     @comment_new = Comment.new

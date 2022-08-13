@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     
     get "search" => "searches#search"
     
+    
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -24,6 +25,12 @@ Rails.application.routes.draw do
       get '/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
       # 論理削除用のルーティング
       patch '/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+      
+      resources :notifications, only: :index do
+        collection do
+          delete 'destroy_all' => 'notifications#destroy_all', as: 'destroy_all'
+        end
+      end
       
       #idを持たせるため
       member do
@@ -35,6 +42,7 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+    
   end  
   
   

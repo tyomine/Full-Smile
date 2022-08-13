@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   
   validates :title, presence: true, length: { maximum: 30 }
   validates :body, presence: true, length: { maximum: 500 }
@@ -29,7 +30,18 @@ class Post < ApplicationRecord
   end
   
   def self.looks(search, word)
-    # 部分一致
+      # 部分一致
       @post = Post.where("title LIKE?","%#{word}%")
   end
+  
+  def create_notification_by(current_user)
+	    notification = current_user.active_notifications.new(
+	      post_id: id,
+	      visited_id: user_id,
+	      action: "like"
+	    )
+	    notification.save if notification.valid?
+  end
+  
+  
 end
