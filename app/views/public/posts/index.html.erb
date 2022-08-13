@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row my_page">
     <div class="col-4 mt-5 text-right">
       <%= image_tag @user.get_profile_image(200,200), class:"user-image" %>
       <div class="h3 font-weight-bold mt-3 mr-5">
@@ -18,6 +18,9 @@
           <%= link_to "フォローワー一覧", user_followers_path(@user.id), class: "btn btn-outline-info" %><br>
         </div>
         <div class="mt-2 mr-3">
+          <% if unchecked_notifications.any? %>
+           <i class="fa fa-circle" style="color: gold;"></i>
+          <% end %>
           <%= link_to "通知", user_notifications_path(@user.id), class: "btn btn-outline-info" %>
         </div>
         <div class="mt-2 mr-3">
@@ -32,7 +35,7 @@
 
   <div class="row">
     <div class="col text-center h2 mt-5 border orange-300">
-      <strong>投稿一覧</strong>
+      <strong>みんなの投稿一覧</strong>
     </div>
   </div>
 
