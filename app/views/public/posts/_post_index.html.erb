@@ -1,14 +1,14 @@
   <% posts.each do |post| %>
     <div class="col-md-4">
-      <div class="card-img-top shadow mt-3 mb-2 bg-ligth">
+      <div class="card-img-top shadow mt-3 mb-2">
         
         <div class="form-inline w-75 mx-auto">
-          <div class="">
+          <div class="mt-2">
             <%= link_to user_path(post.user_id) do %>
               <%= image_tag post.user.get_profile_image(60,60), class:"post-user-image" %>
             <% end %>
           </div>
-          <div class="">
+          <div class="mt-2">
             <%= link_to user_path(post.user_id) do %>
               &emsp;<strong class="text-dark"><%= post.user.name %></strong>
             <% end %> 
@@ -33,7 +33,7 @@
             <strong class="text-dark"><%= post.title.truncate(10) %></strong>
           <% end %>
         </div>
-        <div class="w-75 mx-auto">
+        <div class="w-75 mx-auto pb-2">
           <%= link_to post_path(post.id) do %>
             <strong class="text-dark"><%= post.body.truncate(10) %></strong>
           <% end %>

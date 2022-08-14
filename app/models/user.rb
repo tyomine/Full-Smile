@@ -24,6 +24,9 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   
+  has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
+  has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
+  
   has_one_attached :profile_image
   
   def self.guest
@@ -58,17 +61,5 @@ class User < ApplicationRecord
     # 部分一致
       @user = User.where("name LIKE?","%#{word}%")
   end
-  
-  
-  # def create_notification_follow!(current_user)
-  #   temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
-  #   if temp.blank?
-  #     notification = current_user.active_notifications.new(
-  #       visited_id: id,
-  #       action: 'follow'
-  #     )
-  #     notification.save if notification.valid?
-  #   end
-  # end
     
 end
