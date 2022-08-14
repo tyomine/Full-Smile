@@ -13,8 +13,8 @@ class Admin::ReportsController < ApplicationController
     @report = Report.find(params[:id])
     if @report.update(report_params)
       flash[:notice] = "対応ステータスを更新しました。"
-      redirect_to admin_user_path(@report.reported)
-    end 
+      redirect_to edit_admin_user_path(@report.reported)
+    end
   end
   
   private
