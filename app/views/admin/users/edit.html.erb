@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center mt-5">
+      <h3>会員情報編集</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form_with model:@user, url: admin_user_path(@user), method: :patch do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <th>名前</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td></td>
+          </tr>
+        </tr>
+       </tbody>
+      </table>
+ 
+
+
+
+ <div class="custom-control custom-radio">
+   <%= f.label :user_status, '会員ステータス' %>
+   <%= f.radio_button :user_status, false %> <%= f.label :有効 %>
+   <%= f.radio_button :user_status, true %> <%= f.label :退会 %>
+ </div>
+ <%= f.submit "ステータスを更新" %>
+<% end %>
+    </div>
+  </div>
+</div>

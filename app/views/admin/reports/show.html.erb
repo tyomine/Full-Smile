@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center mt-5">
+      <h3 class="page-title">通報詳細</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>通報ID</td>
+            <td><%= link_to @report.id %></td>
+          </tr>
+          <tr>
+            <td>会員名</td>
+            <td><%= link_to @report.reported.name, admin_user_path(@report.reported) %></td>
+          </tr>
+          <tr>
+            <td>理由</td>
+            <td><%= @report.reason %></td>
+          </tr>
+          <tr>
+            <td>URL等</td>
+            <td><%= @report.url %></td>
+          </tr>
+          <tr>
+            <td>通報者</td>
+            <td><%= @report.reporter.name %></td>
+          </tr>
+          <tr>
+            <td>対応ステータス</td>
+            <td>
+              <%= @report.status_i18n %>
+              <%= form_with model: @report, url:admin_report_path(@report), method: :patch, local: true do |f| %>
+                <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>
+                <%= f.submit '更新' %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

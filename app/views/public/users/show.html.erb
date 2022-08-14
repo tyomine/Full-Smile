@@ -7,6 +7,11 @@
   <div class="row mt-5">
     <div class="col-4 text-right">
       <%= image_tag @user.get_profile_image(200,200), class:"user-image" %>
+      <div class="mt-3 text-rigth">
+        <% if @user != current_user %>
+          <%= link_to "ユーザーを通報", new_user_report_path(@user), class: "btn btn-danger" %>
+        <% end %>
+      </div>
     </div>
     <div class="col-8 text-center">
       <div class="h4 font-weight-bold">

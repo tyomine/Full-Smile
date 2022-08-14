@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center mt-5">
+      <h3>通報</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form_with model:[@user, @report] do |f| %>
+        <div class="form-group">
+          <table class="text-center w-75 mt-5">
+            <tbody>
+              <tr>
+                <th>通報理由</th>
+                <td><%= f.text_area :reason, rows:'3', class:"form-control" %></td>
+              </tr>
+              <tr class="mt-5">
+                <th>通報投稿URL</th>
+                <td><%= f.text_field :url, class:"form-control" %></td>
+              </tr>
+              <tr>
+                <th></th>
+                <td><%= f.submit "通報する", class: "btn btn-danger" %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
