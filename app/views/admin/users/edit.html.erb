@@ -4,41 +4,32 @@
       <h3>会員情報編集</h3>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-
-      <table>
-        <tbody>
-          <%= form_with model:@user, url: admin_user_path(@user), method: :patch do |f| %>
+  <div class="row mt-5">
+    <div class="col w-75">
+      <table class='table table-hover table-inverse mx-auto test-box col-12'>
+        <thead class="h4">
           <tr>
             <th>名前</th>
-            <td><%= @user.name %></td>
-          </tr>
-          <tr>
             <th>メールアドレス</th>
-            <td><%= @user.email %></td>
-          </tr>
-          <tr>
             <th>登録日</th>
-            <td><%= @user.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
+        </thead>
+        <tbody class="h4">
+          <%= form_with model:@user, url: admin_user_path(@user), method: :patch do |f| %>
           <tr>
-            <th></th>
-            <td>
-              <%= f.label :user_status, '会員ステータス' %>
-              <%= f.radio_button :user_status, false %> <%= f.label :有効 %>
-              <%= f.radio_button :user_status, true %> <%= f.label :退会 %>
-            <%= f.submit "ステータスを更新" %>
-            </td>
-          </tr>
-          <% end %>
-       </tbody>
+            <td><%= @user.name %></td>
+            <td><%= @user.email %></td>
+            <td><%= @user.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>  
+        </tbody>
       </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-
+      <div class="text-center h4 mt-5">
+        <%= f.label :user_status, '会員ステータス' %>
+        <%= f.radio_button :user_status, false %> <%= f.label :有効 %>
+        <%= f.radio_button :user_status, true %> <%= f.label :退会 %>
+        <%= f.submit "ステータスを更新" %>
+        <% end %>
+      </div>    
     </div>
   </div>
  
