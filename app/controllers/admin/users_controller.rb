@@ -21,7 +21,7 @@ class Admin::UsersController < ApplicationController
     else
       render "edit"
     end
-  end  
+  end
   
   def unsubscribe
     @user = User.find(params[:user_id])
