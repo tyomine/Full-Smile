@@ -44,6 +44,12 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
   
+  # いいねをされた人数
+  def get_count_liked_user
+    #joins,distinct,count調べる
+    Like.joins(:post).where("posts.user_id = ?",self.id).select(:user_id).distinct.count
+  end
+  
   # フォローしたときの処理
   def follow(user_id)
     relationships.create(followed_id: user_id)

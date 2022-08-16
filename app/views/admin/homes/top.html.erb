@@ -7,7 +7,7 @@
   <div class="row mb-3">
     <% @posts.each do |post| %>
       <div class="col-md-4">
-        <div class="card-img-top shadow mt-3 mb-2">
+        <div class="card-img-top shadow mt-3 mb-2 bg-light">
           
           <div class="card-top text-center pt-3">
             <%= link_to admin_user_path(post.user_id) do %>
