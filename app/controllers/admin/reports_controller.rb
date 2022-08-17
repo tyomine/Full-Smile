@@ -2,8 +2,9 @@ class Admin::ReportsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @reports = Report.page(params[:page]).order(created_at: :desc)
-    
+    reports = Report.all
+    reports.each {|report| report.update(is_checked: true)} 
+    @reports = reports.page(params[:page]).order(created_at: :desc)
   end
 
   def show

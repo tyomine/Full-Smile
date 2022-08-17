@@ -17,6 +17,11 @@
         <% end %>
       </li>
       <li>
+        <% if @unchecked_reports.present? %>
+          <i class="fas fa-circle n-circle fa-stack", class: "nav-link text-light" style="color: #black; font-size: 0.7em;"></i>
+        <% end %>
+      </li>
+      <li>
         <%= link_to admin_reports_path, class: "nav-link text-light" do %>
           <i class="fas fa-bell"></i> 通報一覧
         <% end %>
