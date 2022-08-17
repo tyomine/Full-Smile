@@ -24,6 +24,7 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   
+  
   has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
   has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
   
@@ -62,9 +63,8 @@ class User < ApplicationRecord
   def following(user)
     followings.include?(user)
   end
-  
+  # 部分一致検索
   def self.looks(search, word)
-    # 部分一致
       @user = User.where("name LIKE?","%#{word}%")
   end
     
