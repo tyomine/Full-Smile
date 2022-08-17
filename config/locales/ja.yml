@@ -5,6 +5,19 @@ ja:
         waiting: "対応待ち"
         keep: "保留"
         finish: "対応済み"
+  activerecord:
+    attributes:
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        introduction: "自己紹介"
+      post:
+        title: "タイトル"
+        body: "説明文"
+        image: "画像" 
+      comment:
+        comment: "コメント"
   datetime:
     distance_in_words:
       half_a_minute: "30秒前後"

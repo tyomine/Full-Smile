@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:new]
   before_action :correct_user, only: [:edit, :update, :destroy]
   
