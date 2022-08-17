@@ -47,7 +47,6 @@ class User < ApplicationRecord
   
   # いいねをされた人数
   def get_count_liked_user
-    #joins,distinct,count調べる
     Like.joins(:post).where("posts.user_id = ?",self.id).select(:user_id).distinct.count
   end
   

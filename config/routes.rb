@@ -51,12 +51,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     
-    resources :users, only: [:index, :show, :edit, :update] do 
-      # 退会確認画面
-      get '/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-      # 論理削除用のルーティング
-      patch '/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-    end
+    resources :users, only: [:index, :show, :edit, :update]
+    
     resources :reports, only: [:index, :show, :update]
       
     resources :posts, only: [:show, :destroy]
