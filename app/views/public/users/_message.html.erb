@@ -1,0 +1,30 @@
+<% if user.get_count_liked_user != 0 %>
+  <i class="fas fa-child"></i><%= user.name %>さんの投稿で<%= user.get_count_liked_user %>人の方が笑顔になりました<i class="fas fa-child"></i><br>
+<% end %>
+<div class="message m-3">
+  <% if user.get_count_liked_user == 1 %>
+    記念すべき1人目のユーザーがあなたの投稿で笑顔になれられたようです！<br>
+    これからもたくさんの方に笑顔を届け続けてください♪
+  <% elsif user.get_count_liked_user == 5 %>
+    素敵な投稿を届けていただきありがとうございます♪
+  <% elsif user.get_count_liked_user == 10 %>
+    もう、10人の方が笑顔になられたようですよ<br>
+    素晴らしいです！
+  <% elsif user.get_count_liked_user == 25 %>
+    これからも素敵な投稿よろしくお願いします！
+  <% elsif user.get_count_liked_user == 50 %>
+    50人の方が笑顔になられたようです！<br>
+    素晴らしい投稿の数々ありがとうございます
+  <% elsif user.get_count_liked_user == 75 %>
+    どんどん、皆さんの笑顔をつかんでいますね<br>
+    素晴らしいです！
+  <% elsif user.get_count_liked_user == 100 %>
+    祝！100人のスマイル獲得です！<br>
+    100人の方が投稿を見て笑顔になることができたようです！<br>
+    たくさんの方をを笑顔にできたってことだけでも<br>
+    凄く嬉しいですよね♪<br>
+    これからも素敵なな投稿お待ちしております♪
+  <% end %> 
+</div>
+
+ 

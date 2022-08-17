@@ -4,9 +4,11 @@
       <strong>プロフィール</strong>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      
+  <div class="row mx-auto text-center">
+    <div class="col h3 m-3">
+      <% if (@user == current_user) && (current_user.name != "guestuser") %>
+          <%= render "message", user:@user %>
+      <% end %>
     </div>
   </div>
   <div class="row mt-5">
