@@ -19,11 +19,18 @@
         <%= render 'layouts/public_header' %>
       <% end %>
     </header>
-    <div class="flash-notifications">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: key) %>
-      <% end %>
-    </div>
-    <%= yield %>
+    
+    <main>
+      <div class="flash-notifications">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: key) %>
+        <% end %>
+      </div>
+      <%= yield %>
+    </main>
+    <div class="push"></div>
+    <footer class="footer mt-auto py-3 fixed-bottom bg-warning mt-5">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     
     get "search" => "searches#search"
     
-    
     resources :users, only: [:show, :edit, :update] do
+      
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
@@ -26,11 +26,11 @@ Rails.application.routes.draw do
       # 論理削除用のルーティング
       patch '/withdrawal' => 'users#withdrawal', as: 'withdrawal'
       
-    resources :notifications, only: :index do
-      collection do
-        delete 'destroy_all' => 'notifications#destroy_all', as: 'destroy_all'
+      resources :notifications, only: :index do
+        collection do
+          delete 'destroy_all' => 'notifications#destroy_all', as: 'destroy_all'
+        end
       end
-    end
       
       resources :reports, only: [:new, :create]
       
@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       member do
         get :likes
       end
+      
     end
     
     resources :posts, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
@@ -49,12 +50,11 @@ Rails.application.routes.draw do
   
   
   namespace :admin do
+    
     root to: "homes#top"
     
     resources :users, only: [:index, :show, :edit, :update]
-    
     resources :reports, only: [:index, :show, :update]
-      
     resources :posts, only: [:show, :destroy]
     
   end
