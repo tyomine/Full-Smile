@@ -56,7 +56,7 @@ class Public::PostsController < ApplicationController
   
   def ensure_guest_user
     if current_user.name == "guestuser"
-      redirect_to posts_path, alert: 'ゲストユーザーは投稿できません。'
+      redirect_to posts_path, alert: "ゲストユーザーは投稿できません。"
     end
   end
   

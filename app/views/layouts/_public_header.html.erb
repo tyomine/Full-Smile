@@ -1,62 +1,59 @@
-  <nav class="navbar navbar-expand navbar-dark navbar-fixed-top" style="background-color:orange;">
-    <ul class="navbar-nav navbar-dark ml-auto">
-      <li>
-          <%= link_to image_tag("pf_logo8.png",size: "60x40"), root_path,class: 'nav-link text-left' %>
-        </li>
-        <li>
-          <%= link_to image_tag("pf_logo7.png",size: "150x40"), root_path,class: 'nav-link text-left' %>
-        </li>
-    <% if user_signed_in? %>
-      <li>
-        <%= render "public/searches/search" %>
-      </li>
-      <li>
-        <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
-          <i class="fas fa-user"></i>マイページ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_post_path, class: "nav-link text-light" do %>
-          <i class="far fa-file-alt"></i>投稿フォーム
-        <% end %>
-      </li>
-      <li>
-        <%= link_to posts_path, class: "nav-link text-light" do %>
-          <i class="far fa-list-alt"></i>投稿一覧
-        <% end %>
-      </li>
-      <li>
-        <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
-          <i class="fas fa-sign-out-alt"></i>ログアウト
-        <% end %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to image_tag("pf_logo8.png",size: "50x50"), root_path, class: "navbar-link text-left"%>
-      </li>
-      <li>
-        <%= link_to image_tag("pf_logo7.png",size: "150x40"), root_path, class: "nav-link text-left"%>
-      </li>
-      <li>
-        <%= link_to root_path, class: "nav-link text-light" do %>
-           <i class="fas fa-home"></i>Home
-        <% end %>
-      </li>
-      <li>
-        <%= link_to about_path, class: "nav-link text-light" do %>
-          <i class="fas fa-link"></i>About
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
-          <i class="fas fa-user-plus"></i>新規登録
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_user_session_path, class: "nav-link text-light" do %>
-          <i class="fas fa-sign-in-alt"></i>ログイン
-        <% end %>
-      </li>
-    <% end %>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:orange;">
+    <div class="container">
+        <%= link_to image_tag("pf_logo8.png",size: "70x45"), root_path %>
+        <%= link_to image_tag("pf_logo9.png",size: "150x40"), root_path %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li>
+              <%= render "public/searches/search" %>
+            </li>
+            <li>
+              <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
+                <i class="fas fa-user"></i>マイページ
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_post_path, class: "nav-link text-light" do %>
+                <i class="far fa-file-alt"></i>投稿フォーム
+              <% end %>
+            </li>
+            <li>
+              <%= link_to posts_path, class: "nav-link text-light" do %>
+                <i class="far fa-list-alt"></i>投稿一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to root_path, class: "nav-link text-light" do %>
+                <i class="fas fa-home"></i>Home
+              <% end %>
+            </li>
+            <li>
+              <%= link_to about_path, class: "nav-link text-light" do %>
+                <i class="fas fa-link"></i>About
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+                <i class="fas fa-user-plus"></i>新規登録
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+                <i class="fas fa-sign-in-alt"></i>ログイン
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </nav>
