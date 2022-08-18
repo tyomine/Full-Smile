@@ -2,6 +2,9 @@
     <ul class="navbar-nav navbar-dark ml-auto">  
     <% if admin_signed_in? %>
       <li>
+        <%= link_to image_tag "pf-logo2.png" root_path %>
+      </li>
+      <li>
         <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
           <i class="fas fa-sign-out-alt"></i> ログアウト
         <% end %>
