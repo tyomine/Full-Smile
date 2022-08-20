@@ -5,6 +5,12 @@
     </div>
   </div>
   <div class="row">
+    <div class="col text-center mt-5">
+      <%= render "public/posts/error", post: @report %>
+    </div>
+  </div>
+  
+  <div class="row">
     <div class="col">
       <%= form_with model:[@user, @report] do |f| %>
         <div class="form-group">
