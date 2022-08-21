@@ -1,5 +1,6 @@
 class Public::NotificationsController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, only: [:index]
   
   def index
     #current_userの投稿に紐づいた通知一覧
@@ -16,5 +17,15 @@ class Public::NotificationsController < ApplicationController
   	@notifications = current_user.passive_notifications.destroy_all
   	redirect_to user_notifications_path
   end
-
+  
+  private
+  
+  def correct_user
+    @user = User.find(params[:user_id])
+    unless @user == current_user 
+      flash[:alert] = "他のユーザーの通知一覧へ遷移できません。"
+      redirect_to user_path(current_user) 
+    end
+  end
+  
 end

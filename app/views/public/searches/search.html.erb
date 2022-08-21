@@ -27,7 +27,7 @@
     <% else %>
       <% @posts.each do |post| %>
         <div class="col-md-4">
-          <div class="card shadow">
+          <div class="card shadow mb-3">
             <div class="card-img-top text-center mt-3">
               <%= link_to post_path(post.id) do %>
                 <%= image_tag post.image, size: "180x190" %>

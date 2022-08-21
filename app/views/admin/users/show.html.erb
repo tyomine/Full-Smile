@@ -14,7 +14,7 @@
         <% if @user.is_deleted == true %>
           <p class="font-weight-bold"></p>退会済みです</p>
         <% else %>
-          <%= link_to "ステータスを更新する",edit_admin_user_path(@user), class: "btn btn-danger" %>
+          <%= link_to "ステータスを更新する",edit_admin_user_path(@user), class: "btn btn-danger", 'data-turbolinks': false %>
         <% end %>
       </div>
     </div>
