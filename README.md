@@ -35,7 +35,10 @@
 
 
 ## 設計書
-- 完成次第追加
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1guF3_NCZHH77Rb1wBAu6haxMGhAtQRumIK5xTY9kwtY/edit?usp=sharing)
+
+## ER図
+
 
 ## 開発環境
 - OS：Linux(CentOS)
