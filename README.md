@@ -38,6 +38,7 @@
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1guF3_NCZHH77Rb1wBAu6haxMGhAtQRumIK5xTY9kwtY/edit?usp=sharing)
 
 ## ER図
+![pf_ER drawio](https://user-images.githubusercontent.com/106651958/185784818-cdadaae3-319d-43ab-99e0-8837e22c569a.png)
 
 
 ## 開発環境
@@ -48,4 +49,4 @@
 - IDE：Cloud9
 
 ## 使用素材
-外部の画像など使用する予定あり（決まり次第追記）
+- [画像使用サイト](https://pixabay.com/ja/)
