@@ -19,18 +19,18 @@
       </div>
     </div>
   </div>
-  <div class="row mt-3">
-    <div class="col-4 h4 text-right font-weight-bold">
+  <div class="row bg-light text-center mt-3">
+    <div class="col-4 h4 font-weight-bold pt-3">
       <p>投稿数</p>
-      <p class="mr-4"><%= @user.posts.count %></p>
+      <p><%= @user.posts.count %></p>
     </div>
-    <div class="col-4 h4 text-center font-weight-bold">
+    <div class="col-4 h4 font-weight-bold pt-3">
       <p>フォロー</p>
       <p><%= @user.followings.count %></p>
     </div>
-    <div class="col-4 h4 text-left font-weight-bold">
+    <div class="col-4 h4 font-weight-bold pt-3">
       <p>フォローワー</p>
-      <p class="ml-5"><%= @user.followers.count %></p>
+      <p><%= @user.followers.count %></p>
     </div>
   </div>
   <div class="row">

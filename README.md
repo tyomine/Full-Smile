@@ -38,7 +38,7 @@
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1guF3_NCZHH77Rb1wBAu6haxMGhAtQRumIK5xTY9kwtY/edit?usp=sharing)
 
 ## ER図
-![pf_ER drawio](https://user-images.githubusercontent.com/106651958/185784818-cdadaae3-319d-43ab-99e0-8837e22c569a.png)
+![Untitled Diagram2 drawio](https://user-images.githubusercontent.com/106651958/185820187-ff160d48-979c-4909-9b93-715e2bedad3c.png)
 
 
 ## 開発環境
