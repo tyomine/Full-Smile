@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class Public::ReportsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @report = Report.new
     @user = User.find(params[:user_id])
   end
-  
+
   def create
     @user = User.find(params[:user_id])
     @report = Report.new(report_params)
@@ -15,12 +17,11 @@ class Public::ReportsController < ApplicationController
       redirect_to user_path(@user), notice: "ご報告ありがとうございます。"
     else
       render "new"
-    end  
+    end
   end
-  
-  private
 
-  def report_params
-    params.require(:report).permit(:reason, :url)
-  end
+  private
+    def report_params
+      params.require(:report).permit(:reason, :url)
+    end
 end

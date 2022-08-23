@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Public::SearchesController < ApplicationController
   before_action :authenticate_user!
 
@@ -9,5 +11,4 @@ class Public::SearchesController < ApplicationController
       @posts = Post.page(params[:page]).looks(params[:search], params[:word])
     end
   end
-  
 end

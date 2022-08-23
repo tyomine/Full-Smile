@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:new]
   before_action :correct_user, only: [:edit, :update, :destroy]
-  
+
   def new
     @post = Post.new
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -15,8 +17,8 @@ class Public::PostsController < ApplicationController
     else
       flash.now[:alert] = "投稿が失敗しました。"
       render :new
-    end  
-  end  
+    end
+  end
 
   def show
     @post = Post.find(params[:id])
@@ -31,7 +33,7 @@ class Public::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -39,32 +41,29 @@ class Public::PostsController < ApplicationController
     else
       flash.now[:alert] = "編集が失敗しました。"
       render :edit
-    end  
+    end
   end
-  
+
   def destroy
     post = Post.find(params[:id])
     post.destroy
     redirect_to posts_path, notice: "削除しました。"
   end
-  
+
   private
-  
-  def post_params
-    params.require(:post).permit(:title, :body, :image,)
-  end
-  
-  def ensure_guest_user
-    if current_user.name == "guestuser"
-      redirect_to posts_path, alert: "ゲストユーザーは投稿できません。"
+    def post_params
+      params.require(:post).permit(:title, :body, :image,)
     end
-  end
-  
-  def correct_user
-    @post = Post.find(params[:id])
-    @user = @post.user
-    redirect_to posts_path unless @user == current_user
-  end
-  
-  
+
+    def ensure_guest_user
+      if current_user.name == "guestuser"
+        redirect_to posts_path, alert: "ゲストユーザーは投稿できません。"
+      end
+    end
+
+    def correct_user
+      @post = Post.find(params[:id])
+      @user = @post.user
+      redirect_to posts_path unless @user == current_user
+    end
 end
