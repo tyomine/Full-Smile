@@ -81,3 +81,24 @@ body {
   height: 70px;
 }
 
+@media screen and (min-width: 768px) {
+  .form-layout {
+    margin-left: 100px;
+  }
+  
+  .name-layout {
+    font-size: 1.75rem;
+  }
+
+} 
+
+@media screen and (max-width: 425px) {
+  .user-image {
+    width: 125px;
+    height: 125px;
+  }
+  
+  .name-layout {
+    font-size: 19px;
+  }
+}  

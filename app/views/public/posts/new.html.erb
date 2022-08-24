@@ -7,11 +7,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="mx-auto">
       <%= render "error", post: @post %>
       <div class="col">
-        <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-          <table>
+        <%= form_with model: @post, url: posts_path, class: "form-horizontal", method: :post do |f| %>
+        <div class="form-group form-layout">
+          <table class="text-center w-75 mt-5">
             <tbody>
               <tr>
                 <th><%= f.label :画像 %></th>
@@ -19,24 +19,21 @@
               </tr>
               <tr>
                 <th><%= f.label :タイトル %></th>
-                <td><%= f.text_field :title, size: "50"%></td>
+                <td><%= f.text_field :title, class:"form-control" %></td>
               </tr>
               <tr>
                 <th><%= f.label :内容 %></th>
-                <td><%= f.text_area :body, size: "60x10"%></td>
+                <td><%= f.text_area :body, rows:'3', class:"form-control" %></td>
+              </tr>
+              <tr>
+                <th></th>
+                <td><%= f.submit "投稿する", class: "btn btn-success" %></td>
               </tr>
             </tbody>
           </table>
-          <div class="row">
-            <div class="mx-auto">
-              <div class="col">
-                <%= f.submit "投稿する", class: "btn btn-success" %>
-              </div>
-            </div>
           </div>
         <% end %>
       </div>
-    </div>
   </div>
 
 
