@@ -7,29 +7,27 @@
       </div>
     </div>
     <div class="col-8 form-inline">
-      <% if @user.name != "guestuser" %>
-        <div class="mt-2 mr-3">
-          <%= link_to "いいね一覧", likes_user_path(@user.id), class: "btn btn-outline-info" %>
-        </div>
-        <div class="mt-2 mr-3">
-          <%= link_to "フォロー一覧", user_followings_path(@user.id), class: "btn btn-outline-info" %>
-        </div>
-        <div class="mt-2 mr-3">
-          <%= link_to "フォローワー一覧", user_followers_path(@user.id), class: "btn btn-outline-info" %><br>
-        </div>
-        <div class="mt-2 mr-3">
-          <% if unchecked_notifications.any? %>
-           <i class="fa fa-circle" style="color: #black;"></i>
-          <% end %>
-          <%= link_to "通知", user_notifications_path(@user.id), class: "btn btn-outline-info" %>
-        </div>
-        <div class="mt-2 mr-3">
-          <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-outline-info" %>
-        </div>
-        <div class="mt-2 mr-3">
-          <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-info" %>
-        </div>
-      <% end %>
+      <div class="mt-2 mr-3">
+        <%= link_to "いいね一覧", likes_user_path(@user.id), class: "btn btn-outline-info" %>
+      </div>
+      <div class="mt-2 mr-3">
+        <%= link_to "フォロー一覧", user_followings_path(@user.id), class: "btn btn-outline-info" %>
+      </div>
+      <div class="mt-2 mr-3">
+        <%= link_to "フォローワー一覧", user_followers_path(@user.id), class: "btn btn-outline-info" %><br>
+      </div>
+      <div class="mt-2 mr-3">
+        <% if unchecked_notifications.any? %>
+         <i class="fa fa-circle" style="color: #black;"></i>
+        <% end %>
+        <%= link_to "通知", user_notifications_path(@user.id), class: "btn btn-outline-info" %>
+      </div>
+      <div class="mt-2 mr-3">
+        <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-outline-info" %>
+      </div>
+      <div class="mt-2 mr-3">
+        <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-info" %>
+      </div>
     </div> 
   </div>
 

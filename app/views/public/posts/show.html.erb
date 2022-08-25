@@ -59,11 +59,9 @@
   </div>
     
   <div class="w-75 mx-auto m-3">
-    <% if current_user.name != "guestuser" %>
-      <%= form_with(model: [@post, @comment], local: false) do |f| %>
-        <%= f.text_area :comment, style: "max-width: 600px; width: 100%; height: 80px;", placeholder: "コメントをここに" %>
-        <%= f.submit "送信する" %>
-      <% end %>
+    <%= form_with(model: [@post, @comment], local: false) do |f| %>
+      <%= f.text_area :comment, style: "max-width: 600px; width: 100%; height: 80px;", placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
     <% end %>
   </div>
 </div>
