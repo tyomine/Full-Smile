@@ -14,7 +14,7 @@
         <%= link_to "フォロー一覧", user_followings_path(@user.id), class: "btn btn-outline-info" %>
       </div>
       <div class="mt-2 mr-3">
-        <%= link_to "フォローワー一覧", user_followers_path(@user.id), class: "btn btn-outline-info" %><br>
+        <%= link_to "フォロワー一覧", user_followers_path(@user.id), class: "btn btn-outline-info" %><br>
       </div>
       <div class="mt-2 mr-3">
         <% if unchecked_notifications.any? %>
