@@ -39,6 +39,11 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:user_id])
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
+    @user.posts.destroy_all
+    @user.comments.destroy_all
+    @user.likes.destroy_all
+    @user.relationships.destroy_all
+    @user.reverse_of_relationships.destroy_all
     reset_session
     redirect_to root_path
   end
