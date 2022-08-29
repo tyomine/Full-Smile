@@ -11,7 +11,6 @@ class Public::NotificationsController < ApplicationController
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
     end
-    @user = current_user
   end
 
   def destroy_all

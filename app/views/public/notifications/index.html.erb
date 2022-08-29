@@ -10,7 +10,7 @@
       <% if @notifications.exists? %>
         <div class="users-index">
           <% @notifications.each do |notification| %>
-            <%= render partial: 'notification', locals: { notification: notification, user: @user } %>
+            <%= render partial: 'notification', locals: { notification: notification } %>
           <% end %>
         </div>
       <% else %>
