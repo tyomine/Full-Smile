@@ -6,6 +6,15 @@
         <div class="mt-5 text-center">
           <%= image_tag @post.image, style: "max-width: 450px; width: 100%;" %>
         </div>
+        
+        <div class="m-2 form-inline mx-auto">
+          タグ:
+          <% @post.tags.each do |tag| %>&emsp;
+            <div class="bg-info text-white p-2">
+              <%= tag.name %>
+            </div>
+          <% end %>
+        </div>
           
         <div class="form-inline w-50 mx-auto mt-2">
           <div class="ml-5">
