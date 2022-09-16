@@ -26,9 +26,10 @@ class Comment < ApplicationRecord
       action: "comment"
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
-    if notification.visiter_id == notification.visited_id
-      notification.checked = true
-    end
-    notification.save if notification.valid?
+    unless notification.visiter_id == notification.visited_id
+      if notification.valid?
+        notification.save
+      end
+    end  
   end
 end

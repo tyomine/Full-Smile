@@ -28,7 +28,8 @@ class Post < ApplicationRecord
     # 部分一致
     @post = Post.where("title LIKE?", "%#{word}%")
   end
-
+  # active_notifications：自分からの通知
+  # passive_notifications：相手からの通知
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
        post_id: id,
@@ -36,9 +37,12 @@ class Post < ApplicationRecord
        action: "like"
      )
     # 自分の投稿に対するいいねの場合は、通知済みとする
-    if notification.visiter_id == notification.visited_id
-      notification.checked = true
+    unless notification.visiter_id == notification.visited_id
+      if notification.valid?
+        notification.save
+      end  
     end
-    notification.save if notification.valid?
+    
+    
   end
 end
