@@ -1,7 +1,12 @@
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:orange;">
     <div class="container">
+      <% if user_signed_in? %>
+        <%= link_to image_tag("pf_logo8.png",size: "70x45"), posts_path %>
+        <%= link_to image_tag("pf_logo9.png",size: "150x40"), posts_path %>
+      <% else %>
         <%= link_to image_tag("pf_logo8.png",size: "70x45"), root_path %>
         <%= link_to image_tag("pf_logo9.png",size: "150x40"), root_path %>
+      <% end %>  
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

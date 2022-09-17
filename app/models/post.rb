@@ -28,8 +28,7 @@ class Post < ApplicationRecord
     # 部分一致
     @post = Post.where("title LIKE?", "%#{word}%")
   end
-  # active_notifications：自分からの通知
-  # passive_notifications：相手からの通知
+
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
        post_id: id,
